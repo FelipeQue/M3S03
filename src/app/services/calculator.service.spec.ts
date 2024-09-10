@@ -26,6 +26,10 @@ describe('CalculatorService', () => {
     expect(service.divide(16, 2)).toEqual(8);
   });
 
+  it('should throw an error when attempting to divide by zero', () => {
+    expect(() => service.divide(10,0)).toThrow();
+  });
+
   it('should multiply two numbers correctly', () => {
     expect(service.multiply(16, 2)).toEqual(32);
   });
