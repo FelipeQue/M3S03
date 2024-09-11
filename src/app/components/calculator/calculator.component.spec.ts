@@ -22,13 +22,6 @@ describe('CalculatorComponent', () => {
   });
 
   it('should correctly sum two numbers', () => {
-    const num1 = 121;
-    const num2 = 212;
-
-    expect(component.calculatorService.sum(num1, num2)).toEqual(333);
-  });
-
-  it('should correctly sum two numbers2', () => {
     component.num1 = 2;
     component.num2 = 3;
     component.sum();
@@ -36,12 +29,22 @@ describe('CalculatorComponent', () => {
     expect(component.result).toEqual(5);
   });
 
-  it('should return the object result of the sum to the user', () => {
+  it('should adequately update the result variable in a sum', () => {
     component.num1 = 2;
     component.num2 = 3;
     component.sum();
 
     expect(component.result).toBe(5);
+  });
+
+  it('should display the result of a sum on the template', () => {
+    component.num1 = 2;
+    component.num2 = 3;
+    component.sum();
+    fixture.detectChanges();
+  
+    const resultElement = fixture.nativeElement.querySelector('p');
+    expect(resultElement.textContent).toContain('5');
   });
 
 
