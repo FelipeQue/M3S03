@@ -47,5 +47,22 @@ describe('CalculatorComponent', () => {
     expect(resultElement.textContent).toContain('5');
   });
 
+  it('should update the variables with the input from the user', () => {
+ 
+    const input1 = fixture.nativeElement.querySelector('input[placeholder="Número 1"]');
+    const input2 = fixture.nativeElement.querySelector('input[placeholder="Número 2"]');
+
+    input1.value = '2';
+    input1.dispatchEvent(new Event('input'));
+
+    input2.value = '3';
+    input2.dispatchEvent(new Event('input'));
+    
+    fixture.detectChanges();
+
+    expect(component.num1).toBe(2);
+    expect(component.num2).toBe(3);
+  });
+
 
 });
